@@ -21,9 +21,9 @@ async function main() {
 async function onInstall(event) {
   console.log(`[Service Worker] (${version}) installed.`);
 
-  //   caches.open(cacheName).then(cache => {
-  //     return cache.addAll(cacheFiles);
-  //   });
+  caches.open(cacheName).then(cache => {
+    return cache.addAll(cacheFiles);
+  });
 
   self.skipWaiting();
 }
@@ -83,6 +83,6 @@ const fromCache = request =>
 const update = request => caches.open(cacheName).then(cache => fetch(request).then(response => cache.put(request, response)));
 
 function onFetch(event) {
-  //   event.respondWith(fromNetwork(event.request, 10000).catch(() => fromCache(event.request)));
-  //   event.waitUntil(update(event.request));
+  event.respondWith(fromNetwork(event.request, 10000).catch(() => fromCache(event.request)));
+  event.waitUntil(update(event.request));
 }
