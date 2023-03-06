@@ -62,27 +62,30 @@ $riwayat = getRiwayat();
         <section class="section">
           <div class="card">
             <div class="card-body">
-              <table class="table table-striped" id="table1">
-                <thead>
-                  <tr>
-                    <th>Produk</th>
-                    <th>Tanggal</th>
-                    <th>Status</th>
-                    <th>ACtion</th>
-                  </tr>
-                </thead>
-                <tbody><?php foreach ($riwayat as $r) : ?>
+              <div class="table-responsive">
+
+                <table class="table table-striped" id="table1">
+                  <thead>
                     <tr>
-                      <td><?= $r['nama'] ?></td>
-                      <td><?= $r['tgl_pesan'] ?></td>
-                      <td><?= $r['status'] == 0 ? 'Menunggu' : 'dikonfirmasi' ?></td>
-                      <td>
-                        <a href="konfirmasi-pembayaran.php?pesid=<?= $r['pesid'] ?>" class="btn btn-primary">detail</a>
-                      </td>
+                      <th>Produk</th>
+                      <th>Tanggal</th>
+                      <th>Status</th>
+                      <th>ACtion</th>
                     </tr>
-                  <?php endforeach; ?>
-                </tbody>
-              </table>
+                  </thead>
+                  <tbody><?php foreach ($riwayat as $r) : ?>
+                      <tr>
+                        <td><?= $r['nama'] ?></td>
+                        <td><?= $r['tgl_pesan'] ?></td>
+                        <td><?= $r['status'] == 0 ? 'Menunggu' : 'dikonfirmasi' ?></td>
+                        <td>
+                          <a href="konfirmasi-pembayaran.php?pesid=<?= $r['pesid'] ?>" class="btn btn-primary">detail</a>
+                        </td>
+                      </tr>
+                    <?php endforeach; ?>
+                  </tbody>
+                </table>
+              </div>
             </div>
           </div>
         </section>

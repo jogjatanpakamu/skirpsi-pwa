@@ -60,38 +60,40 @@ $riwayat = getPesanan();
                 <section class="section">
                     <div class="card">
                         <div class="card-body">
-                            <table class="table table-striped" id="table1">
-                                <thead>
-                                    <tr>
-                                        <th>KODE PESANAN</th>
-                                        <th>TANGGAL PESAN</th>
-                                        <th>NAMA PEMESAN</th>
-                                        <th>Status</th>
-                                        <th>Action</th>
-                                    </tr>
-                                </thead>
-                                <tbody><?php foreach ($riwayat as $r) : ?>
+                            <div class="table-responsive">
+                                <table class="table table-striped" id="table1">
+                                    <thead>
                                         <tr>
-                                            <td><?= $r['pesid'] ?></td>
-                                            <td><?= $r['tgl_pesan'] ?></td>
-                                            <td><?= $r['nama'] ?></td>
-                                            <td>
-                                                <?php if ($r['pstatus'] == 1) : ?>
-                                                    <span class="badge bg-success">Sudah di konfirmasi </a>
-                                                    <?php else : ?>
-                                                        <span class="badge bg-warning">Menunggu di konfirmasi </a>
-
-                                                        <?php endif; ?>
-                                            </td>
-                                            <td>
-                                                <a href="pesanan.php?pesid=<?= $r['pesid'] ?>" class="btn btn-success">Lihat Detail </a>
-
-
-                                            </td>
+                                            <th>KODE PESANAN</th>
+                                            <th>TANGGAL PESAN</th>
+                                            <th>NAMA PEMESAN</th>
+                                            <th>Status</th>
+                                            <th>Action</th>
                                         </tr>
-                                    <?php endforeach; ?>
-                                </tbody>
-                            </table>
+                                    </thead>
+                                    <tbody><?php foreach ($riwayat as $r) : ?>
+                                            <tr>
+                                                <td><?= $r['pesid'] ?></td>
+                                                <td><?= $r['tgl_pesan'] ?></td>
+                                                <td><?= $r['nama'] ?></td>
+                                                <td>
+                                                    <?php if ($r['pstatus'] == 1) : ?>
+                                                        <span class="badge bg-success">Sudah di konfirmasi </a>
+                                                        <?php else : ?>
+                                                            <span class="badge bg-warning">Menunggu di konfirmasi </a>
+
+                                                            <?php endif; ?>
+                                                </td>
+                                                <td>
+                                                    <a href="pesanan.php?pesid=<?= $r['pesid'] ?>" class="btn btn-success">Lihat Detail </a>
+
+
+                                                </td>
+                                            </tr>
+                                        <?php endforeach; ?>
+                                    </tbody>
+                                </table>
+                            </div>
                         </div>
                     </div>
                 </section>
