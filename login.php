@@ -23,7 +23,7 @@
                     </div>
                     <h5 class="auth mb-5"> SELAMAT DATANG</h5>
 
-                    <form action="auth.php" method="POST">
+                    <form nam action="auth.php" method="POST">
                         <div class="form-group position-relative has-icon-left mb-4">
                             <input type="text" name="username" class="form-control form-control-xl" placeholder="Username" />
                             <div class="form-control-icon">
@@ -37,8 +37,7 @@
                             </div>
                         </div>
 
-                        <input type="submit" name="login" value="Masuk" class="btn btn-primary btn-block btn-lg shadow-lg mt-5">
-
+                        <input type="submit" name="login" value="Masuk" class="btn btn-primary btn-block btn-lg shadow-lg mt-5 loginnnnn">
                     </form>
                     <div class="text-center mt-5 text-lg fs-4">
                         <p class="text-gray-600">
@@ -54,6 +53,14 @@
             </div>
         </div>
     </div>
+
+
+
+    <script src="assets/extensions/jquery/jquery.min.js"></script>
+
+
+
+    <script src="assets/js/main.js"></script>
 </body>
 
 </html>

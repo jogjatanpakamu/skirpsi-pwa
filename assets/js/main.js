@@ -84,7 +84,6 @@
     data_pesanan = data;
   });
 
-  // console.log(isLoggedIn);
   $('#btn_pesan').on('click', function () {
     if (isLoggedIn) {
       if (isOnline) {
@@ -161,6 +160,4 @@
     }
     return false;
   });
-
-  console.log('oke');
 })(window);

@@ -4,7 +4,8 @@
 function getPesanan()
 {
 
-    $koneksi = new mysqli('localhost', 'root', '', 'sablon');
+    $koneksi = new mysqli('localhost', 'id19730001_user_salaon', 'PasswordSalon123#', 'id19730001_db_salon');
+
     $sql = "SELECT pesanan.id as pesid,pesanan.status as pstatus,pesanan.* ,users.*  
     FROM pesanan
     JOIN users ON pesanan.user_id = users.id
@@ -32,7 +33,8 @@ function insertPesanan($data)
     $bukti_bayar = '';
     $catatan = $data['catatan'];
 
-    $koneksi = new mysqli('localhost', 'root', '', 'sablon');
+    $koneksi = new mysqli('localhost', 'id19730001_user_salaon', 'PasswordSalon123#', 'id19730001_db_salon');
+
     $sql = "INSERT INTO pesanan(id, produk_id,user_id, tgl_pesan, nama_pemesan, email, telpon, `status`, bukti_bayar, catatan) 
             values('$id','$produk_id','$pesid', '$tgl_pesan','$nama_pemesan','$email','$telpon','$status','$bukti_bayar','$catatan')";
     $r = mysqli_query($koneksi, $sql);

@@ -6,7 +6,8 @@ if (!isset($_GET['id'])) {
     return false;
 }
 
-$conn = new mysqli('localhost', 'root', '', 'sablon');
+$conn = new mysqli('localhost', 'id19730001_user_salaon', 'PasswordSalon123#', 'id19730001_db_salon');
+
 
 
 $r = mysqli_query($conn, "SELECT produk.id as pesid ,produk.*, kategori.*   FROM produk

@@ -3,7 +3,8 @@
 function getRiwayat()
 {
     $id = $_COOKIE['uuid'];
-    $koneksi = new mysqli('localhost', 'root', '', 'sablon');
+    $koneksi = new mysqli('localhost', 'id19730001_user_salaon', 'PasswordSalon123#', 'id19730001_db_salon');
+
     $sql = "SELECT pesanan.id as pesid,pesanan.* , kategori.*, produk.nama as namaproduk,produk.* 
     FROM pesanan
      JOIN produk ON pesanan.produk_id = produk.id 
@@ -33,7 +34,8 @@ function insertProduk()
     $nama = 'produk3';
     $kategori = 1;
     $foto = null;
-    $koneksi = new mysqli('localhost', 'root', '', 'sablon');
+    $koneksi = new mysqli('localhost', 'id19730001_user_salaon', 'PasswordSalon123#', 'id19730001_db_salon');
+
     $sql = "INSERT INTO produk(nama, kategori,foto) values('$nama','$kategori','$foto')";
     $r = mysqli_query($koneksi, $sql);
     return $r;

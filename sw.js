@@ -1,12 +1,12 @@
 'use strict';
 
-const version = 111;
+const version = 2;
 var isOnline = true;
 var isLoggedIn = false;
 var cacheName = `my-cache-${version}`;
 var allPostsCaching = false;
 
-var cacheFiles = ['/', '/katalog.php'];
+var cacheFiles = ['/', '/katalog.php', '/sw.js'];
 self.addEventListener('install', onInstall);
 self.addEventListener('activate', onActivate);
 self.addEventListener('message', onMessage);
@@ -20,11 +20,9 @@ async function main() {
 
 async function onInstall(event) {
   console.log(`[Service Worker] (${version}) installed.`);
-
   caches.open(cacheName).then(cache => {
     return cache.addAll(cacheFiles);
   });
-
   self.skipWaiting();
 }
 
@@ -37,7 +35,7 @@ async function handleActivation() {
     return Promise.all(
       cache.map(cache => {
         if (cache !== cacheName) {
-          return caches.delete(cacheName);
+          return caches.delete(cache);
         }
       })
     );

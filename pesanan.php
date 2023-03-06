@@ -4,7 +4,8 @@ require_once 'model/riwayat.php';
 $id = $_GET['pesid'];
 
 
-$koneksi = new mysqli('localhost', 'root', '', 'sablon');
+$koneksi = new mysqli('localhost', 'id19730001_user_salaon', 'PasswordSalon123#', 'id19730001_db_salon');
+
 $sql = "SELECT pesanan.id as pesid ,pesanan.* , kategori.*, produk.nama as namaproduk,produk.* 
 FROM pesanan
  JOIN produk ON pesanan.produk_id = produk.id 
