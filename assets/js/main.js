@@ -183,12 +183,13 @@
               code: 'create'
             },
             success: function (data) {
+              console.log(data);
               Swal.fire({
                 icon: 'success',
                 title: 'Success',
                 timer: 2000
               }).then(() => {
-                window.location.href = 'riwayat-belanja.php';
+                window.location.href = `konfirmasi-pembayaran.php?pesid=${data}`;
               });
             }
           });

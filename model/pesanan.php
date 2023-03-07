@@ -32,18 +32,20 @@ function insertPesanan($data)
     $status = 0;
     $bukti_bayar = '';
     $catatan = $data['catatan'];
-
     $koneksi = new mysqli('localhost', 'root', '', 'sablon');
-
     $sql = "INSERT INTO pesanan(id, produk_id,user_id, tgl_pesan, nama_pemesan, email, telpon, `status`, bukti_bayar, catatan) 
             values('$id','$produk_id','$pesid', '$tgl_pesan','$nama_pemesan','$email','$telpon','$status','$bukti_bayar','$catatan')";
-    $r = mysqli_query($koneksi, $sql);
-    return $r;
+    // $r = mysqli_query($koneksi, $sql);
+    if ($koneksi->query($sql) === TRUE) {
+        $last_id = $koneksi->insert_id;
+        echo  $last_id;
+    } else {
+        echo "Error: " . $sql . "<br>" . $koneksi->error;
+    }
 }
 
 
 if (isset($_POST['code'])) {
-
     if ($_POST['code'] == 'create') {
         insertPesanan($_POST);
     }

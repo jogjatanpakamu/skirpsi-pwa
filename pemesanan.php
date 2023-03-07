@@ -186,7 +186,7 @@ if (!$produk) {
                       </div>
                       <div class="col-12 form-group">
                         <div class="form-group with-title mb-3">
-                          <textarea class="form-control" readonly id="exampleFormControlTextarea1" rows="3">Pada Catatan Silahkan isikan keterangan berupa informasi pemesanan..&#13; Contoh 1. Ingin memesan Produk ini dengan ukurana XL tapi desain dari saya sendiri&#13; Contoh 2. Saya ingin pesan Kaos ini dengan UKURAN M  </textarea>
+                          <textarea class="form-control" readonly id="exampleFormControlTextarea1" rows="3">Pada Catatan Silahkan isikan keterangan berupa informasi pemesanan..&#13; Contoh 1. Ingin memesan Produk ini dengan ukurana XL tapi desain dari saya sendiri&#13; Contoh 2. Saya ingin pesan Kaos ini dengan UKURAN M &#13; Nb: Untuk proses selanjutnya silahkan lakukan pesanan kemudian kontak penjual..    </textarea>
                           <label>Keterangan</label>
                         </div>
                       </div>
@@ -204,7 +204,7 @@ if (!$produk) {
 
       <div id="card-order">
         <button type="button" id="btn_pesan" class="btn btn-primary  d-none">
-          BELI SEKARANG
+          PESAN SEKARANG
         </button>
       </div>
     </div>
