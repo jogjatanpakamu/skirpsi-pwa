@@ -74,12 +74,7 @@
                 <?php endif; ?>
                 <li class="sidebar-title">akun saya</li>
                 <?php if (isset($_COOKIE['isLoggedIn'])) : ?>
-                    <!-- <li class="sidebar-item">
-                        <a href="#" class="sidebar-link">
-                            <i class="icon-mid bi bi-person"></i>
-                            <span>Profile</span>
-                        </a>
-                    </li> -->
+
 
                     <li class="sidebar-item">
                         <a href="auth.php?isLoggedIn" class="sidebar-link">

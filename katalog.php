@@ -27,15 +27,15 @@ $produk = getProduks();
               <div class="col-xl-4 col-md-6 col-6">
                 <div class="card">
                   <div class="card-content">
-                    <img src="assets/images/produk/.<?= $dt['foto'] ?>" class="card-img-top img-fluid" alt="singleminded" />
+                    <img src="assets/images/produk/<?= $dt['foto'] ?>" class="card-img-top img-fluid" alt="singleminded" />
                     <div class="card-body">
                       <h5 class="card-title"><?= $dt['nama'] ?></h5>
                     </div>
                   </div>
                   <ul class="list-group list-group-flush">
-                    <li class="list-group-item">jenis :<?= $dt['jenis'] ?></li>
-                    <li class="list-group-item">bahan :<?= $dt['bahan'] ?></li>
-
+                    <li class="list-group-item"><b>jenis : </b><?= $dt['jenis'] ?></li>
+                    <li class="list-group-item"><b>bahan :</b><?= $dt['bahan'] ?></li>
+                    <li class="list-group-item"><b>Harga Mulai Dari :</b>Rp. <?= number_format($dt['harga']) ?></li>
                     <li class="list-group-item"><a href="pemesanan.php?id=<?= $dt['pesid'] ?>" class="btn btn-outline-primary w-100">Lihat</a></li>
 
                   </ul>

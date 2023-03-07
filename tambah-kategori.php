@@ -2,9 +2,10 @@
 
 
 $nama = $_POST['bahan'];
-$kategori = $_POST['jenis'];
+$jenis = $_POST['jenis'];
+$harga = $_POST['harga'];
 
-$conn = new mysqli('localhost', 'id19730001_user_salaon', 'PasswordSalon123#', 'id19730001_db_salon');
+$conn = new mysqli('localhost', 'root', '', 'sablon');
 
-mysqli_query($conn, "INSERT INTO kategori(bahan,jenis) VALUES ('$nama','$kategori')");
+mysqli_query($conn, "INSERT INTO kategori(bahan,jenis,harga) VALUES ('$nama','$jenis','$harga')");
 header('location:produk.php');

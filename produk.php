@@ -3,7 +3,7 @@ require_once 'header.php';
 require_once 'model/produk.php';
 
 
-$conn = new mysqli('localhost', 'id19730001_user_salaon', 'PasswordSalon123#', 'id19730001_db_salon');
+$conn = new mysqli('localhost', 'root', '', 'sablon');
 
 
 
@@ -84,27 +84,19 @@ while ($kategori = mysqli_fetch_assoc($sql)) {
                             <table class="table table-striped" id="table1">
                                 <thead>
                                     <tr>
-                                        <th>Nama</th>
-                                        <th>Jenis</th>
-                                        <th>Action</th>
+                                        <th>Nama </th>
+                                        <th>Bahan </th>
+                                        <th>Jenis Sablon</th>
+                                        <th>Aksi</th>
 
                                     </tr>
                                 </thead>
                                 <tbody><?php foreach ($data as $r) : ?>
                                         <tr>
+                                            <td><?= $r['nama'] ?></td>
                                             <td><?= $r['bahan'] ?></td>
                                             <td><?= $r['jenis'] ?></td>
-
-                                            <td>
-
-                                                <a href="edit-produk.php?id=<?= $r['pesid'] ?>" class="btn btn-primary"> Ubah PRODUK</a>
-
-                                                <!-- <form action="tambah-produk.php" method="post">
-                                                    <input type="hidden" value="<?= $r['pesid'] ?>" name="idproduk">
-                                                    <input type="submit" class="btn btn-sm btn-danger" name="hapusproduk" value="HAPUS">
-                                                </form> -->
-
-                                            </td>
+                                            <td> <a href="edit-produk.php?id=<?= $r['pesid'] ?>" class="btn btn-primary">ubah</a></td>
 
                                         </tr>
                                     <?php endforeach; ?>
@@ -130,6 +122,8 @@ while ($kategori = mysqli_fetch_assoc($sql)) {
                                     <tr>
                                         <th>Bahan</th>
                                         <th>Jenis</th>
+                                        <th>Harga Awal</th>
+                                        <th>Aksi</th>
 
                                     </tr>
                                 </thead>
@@ -137,6 +131,8 @@ while ($kategori = mysqli_fetch_assoc($sql)) {
                                         <tr>
                                             <td><?= $r['bahan'] ?></td>
                                             <td><?= $r['jenis'] ?></td>
+                                            <td><?= $r['harga'] ?></td>
+                                            <td> <a href="edit-kategori.php?id=<?= $r['id'] ?>" class="btn btn-primary">ubah</a></td>
 
                                         </tr>
                                     <?php endforeach; ?>

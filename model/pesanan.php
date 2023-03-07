@@ -4,7 +4,7 @@
 function getPesanan()
 {
 
-    $koneksi = new mysqli('localhost', 'id19730001_user_salaon', 'PasswordSalon123#', 'id19730001_db_salon');
+    $koneksi = new mysqli('localhost', 'root', '', 'sablon');
 
     $sql = "SELECT pesanan.id as pesid,pesanan.status as pstatus,pesanan.* ,users.*  
     FROM pesanan
@@ -25,7 +25,7 @@ function insertPesanan($data)
     $pesid = $_COOKIE['uuid'];
     $id = rand(1000000, 2000000);
     $produk_id = $data['produk_id'];
-    $tgl_pesan = date('Y-m-d');
+    $tgl_pesan = date('Y-m-d H:i:s');
     $nama_pemesan = $data['nama_pemesan'];
     $email = $data['email'];
     $telpon = $data['telpon'];
@@ -33,7 +33,7 @@ function insertPesanan($data)
     $bukti_bayar = '';
     $catatan = $data['catatan'];
 
-    $koneksi = new mysqli('localhost', 'id19730001_user_salaon', 'PasswordSalon123#', 'id19730001_db_salon');
+    $koneksi = new mysqli('localhost', 'root', '', 'sablon');
 
     $sql = "INSERT INTO pesanan(id, produk_id,user_id, tgl_pesan, nama_pemesan, email, telpon, `status`, bukti_bayar, catatan) 
             values('$id','$produk_id','$pesid', '$tgl_pesan','$nama_pemesan','$email','$telpon','$status','$bukti_bayar','$catatan')";

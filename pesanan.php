@@ -4,7 +4,7 @@ require_once 'model/riwayat.php';
 $id = $_GET['pesid'];
 
 
-$koneksi = new mysqli('localhost', 'id19730001_user_salaon', 'PasswordSalon123#', 'id19730001_db_salon');
+$koneksi = new mysqli('localhost', 'root', '', 'sablon');
 
 $sql = "SELECT pesanan.id as pesid ,pesanan.* , kategori.*, produk.nama as namaproduk,produk.* 
 FROM pesanan
@@ -84,7 +84,7 @@ if (!$data) {
                                             <div class="col-12 col-sm-6 col-lg-4 mt-2 mt-md-0 mb-md-0 mb-2">
                                                 <div class="row">
                                                     <a href="#" class="mb-4">
-                                                        <img class="w-100 active" src="assets/images/produk/.<?= $data['foto'] ?>" data-bs-target="#Gallerycarousel" data-bs-slide-to="0" />
+                                                        <img class="w-100 active" src="assets/images/produk/<?= $data['foto'] ?>" data-bs-target="#Gallerycarousel" data-bs-slide-to="0" />
                                                     </a>
                                                 </div>
                                             </div>

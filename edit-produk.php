@@ -6,12 +6,13 @@ if (!isset($_GET['id'])) {
     return false;
 }
 
-$conn = new mysqli('localhost', 'id19730001_user_salaon', 'PasswordSalon123#', 'id19730001_db_salon');
+$conn = new mysqli('localhost', 'root', '', 'sablon');
 
-
+$id = $_GET['id'];
 
 $r = mysqli_query($conn, "SELECT produk.id as pesid ,produk.*, kategori.*   FROM produk
    JOIN kategori ON kategori.id = produk.kategori
+   WHERE produk.id='$id'
       ");
 
 $data = mysqli_fetch_assoc($r);
@@ -74,12 +75,13 @@ while ($kategori = mysqli_fetch_assoc($sql)) {
 
                     <div class="card">
                         <div class="card-header">
-                            <h4 class="card-title">Edit Produk</h4>
+                            <h4 class="card-title">ubah data produk</h4>
                         </div>
                         <div class="card-content">
                             <div class="card-body">
-                                <form method="POST" enctype="multipart/form-data" action="tambah-produk.php">
-                                    <input type="hidden" name="produk_id" id="produk_id" value="<?= $produk['id'] ?>">
+                                <form method="POST" enctype="multipart/form-data" action="edit_produk.php">
+                                    <input type="hidden" name="produk_id" id="produk_id" value="<?= $data['pesid'] ?>">
+                                    <input type="hidden" name="foto" id="foto" value="<?= $data['foto'] ?>">
                                     <div class="form-body">
                                         <div class="row">
                                             <div class="col-md-4">
@@ -100,20 +102,20 @@ while ($kategori = mysqli_fetch_assoc($sql)) {
                                             </div>
 
                                             <div class="col-md-4">
-                                                <label>foro</label>
+                                                <label>foto</label>
                                             </div>
                                             <div class="col-md-8 form-group">
                                                 <input type="file" class="form-control" name="foto" id="foto" aria-describedby="inputGroupFileAddon04" aria-label="Upload">
                                             </div>
                                             <div class="col-md-4">
-                                                <input name="editproduk" type="submit" class="btn btn-primary me-1 mb-1" value="UBAH">
-
+                                                <input name="editproduk" type="submit" class="btn btn-primary btn-sm me-1 " value="UBAH">
+                                                <a href="#" data-id="<?= $data['pesid'] ?>" class="btn btn-sm btn-danger btn-hapus"> Hapus</a>
                                             </div>
-
-
                                         </div>
                                     </div>
                                 </form>
+
+
                             </div>
                         </div>
                     </div>

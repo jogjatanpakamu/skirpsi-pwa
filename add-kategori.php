@@ -3,7 +3,7 @@ require_once 'header.php';
 require_once 'model/produk.php';
 
 
-$conn = new mysqli('localhost', 'id19730001_user_salaon', 'PasswordSalon123#', 'id19730001_db_salon');
+$conn = new mysqli('localhost', 'root', '', 'sablon');
 
 
 $r = mysqli_query($conn, "select * from kategori");
@@ -74,13 +74,19 @@ $data;
                                                 <label>BAHAN</label>
                                             </div>
                                             <div class="col-md-8 form-group">
-                                                <input type="text" id="bahan" class="form-control" name="bahan" placeholder="Judul" required />
+                                                <input type="text" id="bahan" class="form-control" name="bahan" placeholder="Bahan" required />
                                             </div>
                                             <div class="col-md-4">
                                                 <label>JENIS</label>
                                             </div>
                                             <div class="col-md-8 form-group">
-                                                <input type="text" id="jenis" class="form-control" name="jenis" placeholder="Judul" required />
+                                                <input type="text" id="jenis" class="form-control" name="jenis" placeholder="Jenis" required />
+                                            </div>
+                                            <div class="col-md-4">
+                                                <label>Harga Awal</label>
+                                            </div>
+                                            <div class="col-md-8 form-group">
+                                                <input type="number" id="harga" class="form-control" name="harga" placeholder="harga awal" required />
                                             </div>
 
                                             <div class="col-md-4">

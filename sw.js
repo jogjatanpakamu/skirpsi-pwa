@@ -1,86 +1,63 @@
-'use strict';
+const version = 1;
+const CACHE_NAME = `my-cache-${version}`;
+const toCache = ['/', '/katalog.php', '/sw.js', '/assets/extensions/jquery/jquery.min.js', '/assets/js/app.js', '/assets/js/main.js'];
 
-const version = 2;
-var isOnline = true;
-var isLoggedIn = false;
-var cacheName = `my-cache-${version}`;
-var allPostsCaching = false;
-
-var cacheFiles = ['/', '/katalog.php', '/sw.js'];
-self.addEventListener('install', onInstall);
-self.addEventListener('activate', onActivate);
-self.addEventListener('message', onMessage);
-self.addEventListener('fetch', onFetch);
-
-main().catch(console.error);
-
-async function main() {
-  await sendMessage({ requestStatusUpdate: true });
-}
-
-async function onInstall(event) {
-  console.log(`[Service Worker] (${version}) installed.`);
-  caches.open(cacheName).then(cache => {
-    return cache.addAll(cacheFiles);
-  });
-  self.skipWaiting();
-}
-
-function onActivate(event) {
-  event.waitUntil(handleActivation());
-}
-
-async function handleActivation() {
-  await caches.keys().then(cache => {
-    return Promise.all(
-      cache.map(cache => {
-        if (cache !== cacheName) {
-          return caches.delete(cache);
-        }
+self.addEventListener('install', function (event) {
+  event.waitUntil(
+    caches
+      .open(CACHE_NAME)
+      .then(function (cache) {
+        return cache.addAll(toCache);
       })
-    );
-  }),
-    await clients.claim();
-  console.log(`[Service Worker] (${version}) activated.`);
-}
-
-async function sendMessage(msg) {
-  var allClients = await clients.matchAll({ includeUncontrolled: true });
-  return Promise.all(
-    allClients.map(function clientMsg(client) {
-      var chan = new MessageChannel();
-      chan.port1.onmessage = onMessage;
-      return client.postMessage(msg, [chan.port2]);
-    })
+      .then(self.skipWaiting())
   );
-}
+});
 
-function onMessage({ data }) {
-  if (data.statusUpdate) {
-    ({ isOnline, isLoggedIn } = data.statusUpdate);
-    console.log(`[Service Worker] (v${version}) status update, isOnline:${isOnline}, isLoggedIn:${isLoggedIn}`);
-  }
-}
+self.addEventListener('fetch', function (event) {
+  event.respondWith(
+    (async function () {
+      const cache = await caches.open(CACHE_NAME);
+      const cacheMatch = await cache.match(event.request);
 
-// fetch the resource from the network
-const fromNetwork = (request, timeout) =>
-  new Promise((fulfill, reject) => {
-    const timeoutId = setTimeout(reject, timeout);
-    fetch(request).then(response => {
-      clearTimeout(timeoutId);
-      fulfill(response);
-      update(request);
-    }, reject);
-  });
+      if (navigator.onLine) {
+        const request = fetch(event.request);
 
-// fetch the resource from the browser cache
-const fromCache = request =>
-  caches.open(cacheName).then(cache => cache.match(request).then(matching => matching || cache.match('/katalog.php')));
+        event.waitUntil(
+          (async function () {
+            const response = await request;
+            await cache.put(event.request, await response.clone());
+          })()
+        );
 
-// cache the current page to make it available for offline
-const update = request => caches.open(cacheName).then(cache => fetch(request).then(response => cache.put(request, response)));
+        return request || cacheMatch;
+      }
 
-function onFetch(event) {
-  event.respondWith(fromNetwork(event.request, 10000).catch(() => fromCache(event.request)));
-  event.waitUntil(update(event.request));
-}
+      return cacheMatch || caches.match('/katalog.php');
+    })()
+  );
+});
+
+self.addEventListener('message', function (event) {
+  console.log('Message received from client ->', event.data);
+  //   self.clients.matchAll().then(clients => {
+  //     clients.forEach(client => client.postMessage('Hello from SW!'));
+  //   });
+});
+
+self.addEventListener('activate', function (event) {
+  event.waitUntil(
+    caches
+      .keys()
+      .then(keyList => {
+        return Promise.all(
+          keyList.map(key => {
+            if (key !== CACHE_NAME) {
+              console.log('[ServiceWorker] Removing old cache', key);
+              return caches.delete(key);
+            }
+          })
+        );
+      })
+      .then(() => self.clients.claim())
+  );
+});

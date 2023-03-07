@@ -3,7 +3,7 @@ require_once 'header.php';
 require_once 'model/produk.php';
 
 
-$conn = new mysqli('localhost', 'id19730001_user_salaon', 'PasswordSalon123#', 'id19730001_db_salon');
+$conn = new mysqli('localhost', 'root', '', 'sablon');
 
 
 $r = mysqli_query($conn, "select * from kategori");

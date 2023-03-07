@@ -1,4 +1,5 @@
 <?php
+
 require_once 'header.php';
 require_once 'model/produk.php';
 
@@ -76,12 +77,13 @@ if (!$produk) {
                   <div class="row">
 
                     <a href="#" class="mb-4">
-                      <img class="w-100 active" src="assets/images/produk/.<?= $produk['foto'] ?>" data-bs-target="#Gallerycarousel" data-bs-slide-to="0" />
+                      <img class="w-100 active" src="assets/images/produk/<?= $produk['foto'] ?>" />
                     </a>
                     <div class="col-12">
 
-                      <h4>HARGA MULAI DARI : Rp.75.000,-</h1>
+                      <h4>HARGA MULAI DARI : Rp.<?= number_format($produk['harga']) ?></h1>
                     </div>
+
                   </div>
                 </div>
                 <div class="col-12 col-lg-7">
@@ -94,20 +96,38 @@ if (!$produk) {
                     </div>
                     <div class="col-12 col-sm-6 col-lg-4">
                       <div class="form-group">
-                        <label for="helperText">Bahan</label>
+                        <label for="helperText">Bahan Kaos</label>
                         <input type="text" id="helperText" class="form-control" placeholder="Name" readonly value="<?= $produk['bahan'] ?>" />
                       </div>
                     </div>
                     <div class="col-12 col-sm-6 col-lg-4">
                       <div class="form-group">
-                        <label for="helperText">jenis</label>
+                        <label for="helperText">Jenis Sablon</label>
                         <input type="text" id="helperText" class="form-control" placeholder="Name" readonly value="<?= $produk['jenis'] ?>" />
                       </div>
                     </div>
                     <div class="col-12 col-sm-6 col-lg-6 mb-4">
                       <a href="#">
-                        <img class="w-100 active" src="assets/images/produk/panduan.png" data-bs-target="#Gallerycarousel" data-bs-slide-to="0" />
+                        <img class="w-100 active" src="assets/images/produk/panduan.png" data-bs-toggle="modal" data-bs-target="#small" />
                       </a>
+
+                      <!--small size modal -->
+                      <div class="modal fade text-left" id="small" tabindex="-1" role="dialog" aria-labelledby="myModalLabel19" aria-hidden="true">
+                        <div class="modal-dialog modal-dialog-centered modal-dialog-scrollable modal-sm" role="document">
+                          <div class="modal-content">
+                            <div class="modal-header">
+                              <h4 class="modal-title" id="myModalLabel19">panduan ukuran Kaos</h4>
+                              <button type="button" class="close" data-bs-dismiss="modal" aria-label="Close">
+                                <i data-feather="x"></i>
+                              </button>
+                            </div>
+                            <div class="modal-body">
+                              <img class="w-100 active" src="assets/images/produk/panduan.png" data-bs-toggle="modal" data-bs-target="#small" />
+                            </div>
+
+                          </div>
+                        </div>
+                      </div>
                     </div>
                     <div class="col-12">
 
@@ -120,6 +140,7 @@ if (!$produk) {
                   <div class="col-12 col-sm-6 col-lg-12">
                     <button type="button" class="btn btn-primary btn_form_pesanan">
                       Pesan
+
                     </button>
                   </div>
                 </div>
@@ -151,10 +172,10 @@ if (!$produk) {
                       </div>
 
                       <div class="col-md-4">
-                        <label>Mobile</label>
+                        <label>telpon / wa</label>
                       </div>
                       <div class="col-md-8 form-group">
-                        <input type="number" id="contact-info" class="form-control" name="telpon" placeholder="telpon" required />
+                        <input type="number" id="contact-info" max="13" class="form-control" name="telpon" placeholder="6289694273720" required />
                       </div>
 
                       <div class="col-12 form-group">

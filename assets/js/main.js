@@ -84,6 +84,76 @@
     data_pesanan = data;
   });
 
+  // hapus Produk
+  $('.btn-hapus').on('click', function (e) {
+    const id = $(this).data('id');
+
+    Swal.fire({
+      title: 'HAPUS PRODUK?',
+      icon: 'warning',
+      showCancelButton: true,
+      confirmButtonColor: '#3085d6',
+      cancelButtonColor: '#d33',
+      cancelButtonText: 'Batal',
+      confirmButtonText: 'Ya'
+    }).then(result => {
+      if (result.isConfirmed) {
+        $.ajax({
+          type: 'POST',
+          url: 'hapus-produk.php',
+          data: {
+            id: id
+          },
+          success: function () {
+            Swal.fire({
+              icon: 'success',
+              showConfirmButton: false,
+              title: 'Success',
+              timer: 2000
+            }).then(() => {
+              window.location.href = 'produk.php';
+            });
+          }
+        });
+      }
+    });
+  });
+
+  // hapus Katgeori
+  $('.btn-hapus-kategori').on('click', function (e) {
+    const id = $(this).data('id');
+
+    Swal.fire({
+      title: 'HAPUS KATEGORI?',
+      icon: 'warning',
+      showCancelButton: true,
+      confirmButtonColor: '#3085d6',
+      cancelButtonColor: '#d33',
+      cancelButtonText: 'Batal',
+      confirmButtonText: 'Ya'
+    }).then(result => {
+      if (result.isConfirmed) {
+        $.ajax({
+          type: 'POST',
+          url: 'hapus-kategori.php',
+          data: {
+            id: id
+          },
+          success: function () {
+            Swal.fire({
+              icon: 'success',
+              showConfirmButton: false,
+              title: 'Success',
+              timer: 2000
+            }).then(() => {
+              window.location.href = 'produk.php';
+            });
+          }
+        });
+      }
+    });
+  });
+
   $('#btn_pesan').on('click', function () {
     if (isLoggedIn) {
       if (isOnline) {
@@ -101,7 +171,6 @@
             data: {
               idPesanan: '',
               produk_id: data_pesanan.produk_id,
-
               nama_pemesan: data_pesanan.nama_pemesan,
               email: data_pesanan.email,
               telpon: data_pesanan.telpon,

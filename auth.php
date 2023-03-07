@@ -1,6 +1,7 @@
 <?php
-require_once 'header.php';
+ob_start();
 require_once 'model/auth.php';
+require_once 'header.php';
 
 
 if (isset($_POST['daftar'])) {
@@ -12,6 +13,7 @@ if (isset($_POST['daftar'])) {
         header('location:index.php');
     }
 }
+
 if (isset($_POST['login'])) {
     $user = $_POST['username'];
     $password = $_POST['password'];

@@ -4,7 +4,7 @@
 <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Login - Mazer Admin Dashboard</title>
+    <title>Register</title>
 
     <link rel="stylesheet" href="assets/css/main/app.css" />
     <link rel="stylesheet" href="assets/css/pages/auth.css" />
@@ -18,9 +18,9 @@
             <div class="col-lg-5 col-12">
                 <div id="auth-left">
 
-                    <h1 class="auth-title">Daftar</h1>
+                    <h1 class="auth-title">Form Registrasi</h1>
                     <p class="auth-subtitle mb-5">
-                        Daftarkan akunmu sekarnag
+                        Daftarkan akun kamu sekarang
                     </p>
 
                     <form action="auth.php" method="POST">

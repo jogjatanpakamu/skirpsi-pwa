@@ -1,6 +1,7 @@
 <?php
-require_once 'header.php';
+ob_start();
 require_once 'model/produk.php';
+require_once 'header.php';
 
 $produk = getProduks();
 
@@ -12,7 +13,7 @@ $produk = getProduks();
     <?php include_once 'navbar.php' ?>
 
     <div id="main-content">
-      <section class="section">
+      <section class="section mb-5">
         <div id="carouselExampleCaptions" class="carousel slide" data-bs-ride="carousel">
           <ol class="carousel-indicators">
             <li data-bs-target="#carouselExampleCaptions" data-bs-slide-to="0" class="active"></li>
@@ -21,24 +22,18 @@ $produk = getProduks();
           </ol>
           <div class="carousel-inner">
             <div class="carousel-item active">
-              <img src="assets/images/produk/.p1.jpeg" class="d-block w-100" alt="..." width="507" height="449" />
+              <img src="assets/images/produk/p1.jpeg" class="d-block w-100" alt="..." width="507" height="449" />
               <div class="carousel-caption d-none d-md-block">
-                <h5>First slide label</h5>
-                <p>Nulla vitae elit libero, a pharetra augue mollis interdum.</p>
               </div>
             </div>
             <div class="carousel-item">
-              <img src="assets/images/produk/.p2.jpeg" class="d-block w-100" alt="..." width="507" height="449" />
+              <img src="assets/images/produk/p2.jpeg" class="d-block w-100" alt="..." width="507" height="449" />
               <div class="carousel-caption d-none d-md-block">
-                <h5>Second slide label</h5>
-                <p>Nulla vitae elit libero, a pharetra augue mollis interdum.</p>
               </div>
             </div>
             <div class="carousel-item">
-              <img src="assets/images/produk/.p3.jpeg" class="d-block w-100" alt="..." width="507" height="449" />
+              <img src="assets/images/produk/p3.jpeg" class="d-block w-100" alt="..." width="507" height="449" />
               <div class="carousel-caption d-none d-md-block">
-                <h5>Third slide label</h5>
-                <p>Nulla vitae elit libero, a pharetra augue mollis interdum.</p>
               </div>
             </div>
           </div>
@@ -53,7 +48,6 @@ $produk = getProduks();
         </div>
       </section>
       <div class="page-heading">
-
         <div class="page-title">
           <div class="row">
             <div class="col-12 col-md-6 order-md-1 order-last">
@@ -68,7 +62,7 @@ $produk = getProduks();
               <div class="col-xl-4 col-md-6 col-6">
                 <div class="card">
                   <div class="card-content">
-                    <img src="assets/images/produk/.<?= $dt['foto'] ?>" class="card-img-top img-fluid" alt="singleminded" />
+                    <img src="assets/images/produk/<?= $dt['foto'] ?>" class="card-img-top img-fluid" alt="singleminded" />
                     <div class="card-body">
                       <h5 class="card-title"><?= $dt['nama'] ?></h5>
                     </div>

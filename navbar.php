@@ -22,10 +22,12 @@
                         </a>
                     </li>
                     <li class="nav-item  me-3">
-                        <a class="nav-link active text-gray-600 " href="#">
-                            About
+                        <a class="nav-link active text-gray-600 " href="tentangkami.php">
+                            Tentang Kami
                         </a>
                     </li>
+
+
                 </ul>
 
             </div>
