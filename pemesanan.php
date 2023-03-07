@@ -181,7 +181,13 @@ if (!$produk) {
                       <div class="col-12 form-group">
                         <div class="form-floating">
                           <textarea class="form-control" placeholder="catatan" rows="5" id="floatingTextarea" name="catatan" required></textarea>
-                          <label for="floatingTextarea">Catatan</label>
+                          <label for="floatingTextarea">Catatan </label>
+                        </div>
+                      </div>
+                      <div class="col-12 form-group">
+                        <div class="form-group with-title mb-3">
+                          <textarea class="form-control" readonly id="exampleFormControlTextarea1" rows="3">Pada Catatan Silahkan isikan keterangan berupa informasi pemesanan..&#13; Contoh 1. Ingin memesan Produk ini dengan ukurana XL tapi desain dari saya sendiri&#13; Contoh 2. Saya ingin pesan Kaos ini dengan UKURAN M  </textarea>
+                          <label>Keterangan</label>
                         </div>
                       </div>
 
