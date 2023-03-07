@@ -1,6 +1,6 @@
-const version = 1;
+const version = 12;
 const CACHE_NAME = `my-cache-${version}`;
-const toCache = ['/', '/katalog.php', '/sw.js', '/assets/extensions/jquery/jquery.min.js', '/assets/js/app.js', '/assets/js/main.js'];
+const toCache = ['/', '/katalog.php', '/assets/extensions/jquery/jquery.min.js', '/assets/js/app.js', '/assets/js/main.js', '/sw.js'];
 
 self.addEventListener('install', function (event) {
   event.waitUntil(
@@ -21,7 +21,6 @@ self.addEventListener('fetch', function (event) {
 
       if (navigator.onLine) {
         const request = fetch(event.request);
-
         event.waitUntil(
           (async function () {
             const response = await request;
@@ -60,4 +59,11 @@ self.addEventListener('activate', function (event) {
       })
       .then(() => self.clients.claim())
   );
+});
+window.addEventListener('beforeinstallprompt', e => {
+  // log the platforms provided as options in an install prompt
+  console.log(e.platforms); // e.g., ["web", "android", "windows"]
+  e.userChoice.then(choiceResult => {
+    console.log(choiceResult.outcome); // either "accepted" or "dismissed"
+  }, handleError);
 });

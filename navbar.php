@@ -10,23 +10,21 @@
             </button>
             <div class="collapse navbar-collapse" id="navbarSupportedContent">
                 <ul class="navbar-nav ms-auto mb-lg-0">
-
-                    <li class="nav-item  me-3">
+                    <li class="nav-item  me-1">
                         <a class="nav-link active text-gray-600 " href="index.php">
                             Home
                         </a>
                     </li>
-                    <li class="nav-item  me-3">
+                    <li class="nav-item  me-1">
                         <a class="nav-link active text-gray-600 " href="katalog.php">
                             Katalog
                         </a>
                     </li>
-                    <li class="nav-item  me-3">
+                    <li class="nav-item  me-1">
                         <a class="nav-link active text-gray-600 " href="tentangkami.php">
                             Tentang Kami
                         </a>
                     </li>
-
 
                 </ul>
 

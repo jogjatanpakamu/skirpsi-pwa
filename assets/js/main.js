@@ -7,6 +7,7 @@
   var swRegistration;
   var svcworker;
   let data_pesanan = '';
+
   var form_data_pesanan = $('#form_data_pesanan');
 
   var btn_pesan = $('#btn_pesan');
@@ -34,6 +35,10 @@
       sendStatusUpdate();
     });
   }
+
+  $(document).ready(function () {
+    $('#myModal3').modal('show');
+  });
 
   async function initServiceWorker() {
     swRegistration = await navigator.serviceWorker.register('sw.js', {
