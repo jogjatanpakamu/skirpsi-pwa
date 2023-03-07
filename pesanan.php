@@ -1,4 +1,13 @@
 <?php
+
+if (!isset($_COOKIE['isLoggedIn'])) {
+    return header('location:katalog.php');
+}
+
+if (isset($_COOKIE['uuidstatus']) && $_COOKIE['uuidstatus'] != '1') {
+    return header('location:riwayat-belanja.php');
+}
+
 require_once 'header.php';
 require_once 'model/riwayat.php';
 $id = $_GET['pesid'];
@@ -6,10 +15,10 @@ $id = $_GET['pesid'];
 
 $koneksi = new mysqli('localhost', 'root', '', 'sablon');
 
-$sql = "SELECT pesanan.id as pesid ,pesanan.* , kategori.*, produk.nama as namaproduk,produk.* 
+$sql = "SELECT pesanan.id as pesid ,pesanan.* , kategori.*, produk.nama as namaproduk,produk.*
 FROM pesanan
- JOIN produk ON pesanan.produk_id = produk.id 
- JOIN kategori ON produk.kategori = kategori.id 
+JOIN produk ON pesanan.produk_id = produk.id
+JOIN kategori ON produk.kategori = kategori.id
 WHERE pesanan.id='$id'";
 $r = mysqli_query($koneksi, $sql);
 $data = mysqli_fetch_assoc($r);
